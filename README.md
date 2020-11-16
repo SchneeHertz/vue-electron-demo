@@ -2,7 +2,7 @@
 
 从零开始搭建一个Vue+Electron项目
 
-### 1. 准备文件夹
+## 1. 准备文件夹
 安装Node.js, Git  
 新建一个根文件夹，以项目名命名，本例为vue-electron-demo  
 在建立的文件夹内打开Shell(Powershell/CMD/MINGW64)  
@@ -20,7 +20,7 @@ node_modules
 新建public文件夹，将图标及html模板复制进去
 
 预览下文件夹结构:  
-```
+```javascript
 .
 ├── dist // build 后的文件夹
 ├── node_modules // npm 第三方库文件夹
@@ -44,7 +44,7 @@ node_modules
 └── webpack.prod.js //生产环境配置
 ```
 
-### 2. 设置Vue
+## 2. 设置Vue
 安装Vue及相关库  
 ```npm install -D vue vue-router```  
 
@@ -72,7 +72,7 @@ textarea
 </style>
 ```
 main.js  
-```
+```javascript
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -87,7 +87,7 @@ new Vue({
 
 文件夹router  
 文件夹router内建立index.js
-```
+```javascript
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -127,12 +127,12 @@ export default {
 </style>
 ```
 
-### 3. 设置Webpack
+## 3. 设置Webpack
 安装Webpack(本例为Webpack 5)及相关库  
 ```npm install -D webpack webpack-cli webpack-dev-server webpack-merge```  
 
 新建webpack.config.js文件，写入webpack配置  
-```
+```javascript
 const path = require('path')
 
 module.exports = {
@@ -143,17 +143,17 @@ module.exports = {
     }
 }
 ```
-entry为src文件夹的main.js文件(之后建立)  
+entry为src文件夹内的main.js文件  
 output为dist文件夹
 
 设置loader  
 ```npm install -D @babel/core @babel/preset-env babel-loader css-loader file-loader style-loader stylus stylus-loader vue-loader  vue-template-compiler```
 
 修改webpack.config.js文件，写入webpack loader配置  
-```
-\\省略已有配置
+```javascript
+//省略已有配置
 module.exports = {
-  \\省略已有配置
+  //省略已有配置
   module: {
     rules: [
       {
@@ -193,14 +193,14 @@ module.exports = {
 ```npm install -D clean-webpack-plugin compression-webpack-plugin html-webpack-plugin@next```
 
 修改webpack.config.js文件，写入webpack plugins配置  
-```
-\\省略已有配置
+```javascript
+//省略已有配置
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-\\省略已有配置
+//省略已有配置
   plugins : [
     new HtmlWebpackPlugin({
       title: 'Vue Electron Demo',
@@ -213,7 +213,7 @@ module.exports = {
 ```
 
 新建webpack.dev.js文件，写入webpack开发环境配置   
-```
+```javascript
 const Webpack = require('webpack')
 const webpackConfig = require('./webpack.config')
 const {merge} = require('webpack-merge')
@@ -230,7 +230,7 @@ module.exports = merge(webpackConfig, {
 })
 ```
 新建webpack.prod.js文件，写入webpack生产环境配置   
-```
+```javascript
 const webpackConfig = require('./webpack.config')
 const {merge} = require('webpack-merge')
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -244,19 +244,19 @@ module.exports = merge(webpackConfig, {
 ```
 
 修改package.json, 添加相关命令  
-```
+```javascript
 "scripts": {
   "build": "webpack --config ./webpack.prod.js",
   "serve": "webpack serve --config ./webpack.dev.js"
 }
 ```
 
-### 4.设置Electron
+## 4.设置Electron
 安装Electron及相关库  
 ```npm install -D electron electron-builder```  
 
 新建index.js文件  
-```
+```javascript
 const { app, BrowserWindow } = require('electron')
 
 function createWindow () {
@@ -288,7 +288,7 @@ app.on('activate', () => {
 ```
 
 修改package.json, 添加electron-builder配置及相关命令  
-```
+```javascript
 "scripts": {
   "start": "electron .",
   "pack": "electron-builder --dir",
@@ -305,7 +305,7 @@ app.on('activate', () => {
 ```
 至此项目搭建完成，之后只需要在src文件夹内编辑业务代码即可
 
-### 5.相关命令
+## 5.相关命令
 
 ```npm run serve```  
 调起webpack开发服务器(带热更新)
