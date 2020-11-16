@@ -12,7 +12,7 @@
     "dist": "electron-builder"
   },
   "build": {
-    "appId": "task.list.diff",
+    "appId": "vue.electron.demo",
     "files": [
       "dist/index.html*",
       "dist/prod.*",
