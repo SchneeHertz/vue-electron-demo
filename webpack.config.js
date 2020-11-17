@@ -6,7 +6,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   entry: path.resolve(__dirname, './src/main.js'),
   output: {
-    filename: 'prod.[name].[contenthash:8].js',
+    filename: './prod/[name].[contenthash:8].js',
     path: path.resolve(__dirname, './dist')
   },
   module: {
@@ -37,7 +37,10 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|woff2?|eot|ttf|svg)$/i,
-        loader: 'file-loader'
+        loader: 'file-loader',
+        options: {
+          name: './prod/[name].[contenthash:8].[ext]',
+        }
       }
     ]
   },

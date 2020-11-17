@@ -15,7 +15,7 @@
     "appId": "vue.electron.demo",
     "files": [
       "dist/index.html*",
-      "dist/prod.*",
+      "dist/prod/*",
       "index.js"
     ]
   },
