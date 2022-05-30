@@ -1,5 +1,7 @@
 # vue-electron-demo
 
+__过时了，不建议使用__
+
 从零开始搭建一个Vue+Electron项目
 
 ## 1. 准备文件夹
